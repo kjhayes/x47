@@ -1,0 +1,23 @@
+Fetch, Decode, Execute
+
+
+32b Instructions
+RAM 8b, REG 4b, DATA 32b, flag 4b
+Sig -> Increase
+
+
+NOp 0000(0) 0000 0000 0000 0000 0000 0000 0000
+JMP 0001(1) 0000 addr[RAM] 0000 0000 0000 0000
+LOD 0010(2) 0000 addr[RAM] addr[Reg] 0000 0000 0000
+STR 0011(3) 0000 addr[RAM] addr[Reg] 0000 0000 0000
+MOV 0100(4) 0000 addr[Reg] addr[Reg] 0000 0000 0000 0000
+
+	ALUOpCodes: 0000 ADD 0001 SUB
+ALM 0101(5) 0000 addr[Reg] 000[A or B] 0000 0000 0000 0000 ()
+ALC 0110(6) 0000 addr[Reg] ALUOpCode[4] 0000 0000 0000 0000
+
+		SIG -> Increase
+	flags: [A Eq B][A > B][A < B][A = 0]
+JPI 0111 (7) 0000 addr[RAM] flag 000[AND(0) or OR(1)] 0000
+
+HLT 1111 0000 0000 0000 0000 0000 0000 0000
